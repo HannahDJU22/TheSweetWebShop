@@ -23,6 +23,7 @@ public class WebShopService {
     List<ShoppingOrder> shoppingOrders = new ArrayList<>();
 
 
+
     public void addItemToShoppingCart(Long id, int quantity) {
         Product item = productRepository.findById(id).get();
         OrderLine orderLine = new OrderLine(item, quantity);
@@ -95,36 +96,30 @@ public class WebShopService {
     }
 
     public void saveShoppingOrder() {
-        //ShoppingOrder shoppingOrder = new ShoppingOrder(user, false, shoppingcart);
-        //shoppingOrder=orderRepository.save(shoppingOrder);
         user.addOrderToUser(new ShoppingOrder(user, false, shoppingcart));
-        user=userRepository.save(user);
-        //System.out.println("hallå listan" + shoppingcart);
+        user = userRepository.save(user);
         shoppingcart.clear();
     }
-    public ShoppingOrder getUsersOrder(){
-        return user.getShoppingOrders().get(user.getShoppingOrders().size()-1);
+
+    public ShoppingOrder getUsersOrder() {
+        return user.getShoppingOrders().get(user.getShoppingOrders().size() - 1);
 
     }
-    public List<ShoppingOrder> showNonDeliveredOrders(){
+
+    public List<ShoppingOrder> showNonDeliveredOrders() {
         shoppingOrders = orderRepository.findByDelivered(false);
         return shoppingOrders;
     }
-    public void updateOrderToDelivered(Long id){
-        ShoppingOrder shoppingOrder=orderRepository.findById(id).get();
+
+    public void updateOrderToDelivered(Long id) {
+        ShoppingOrder shoppingOrder = orderRepository.findById(id).get();
         shoppingOrder.setDelivered(true);
         orderRepository.save(shoppingOrder);
     }
 
     public List<ShoppingOrder> showAllDeliveredOrders() {
-        shoppingOrders=orderRepository.findByDelivered(true);
+        shoppingOrders = orderRepository.findByDelivered(true);
         return shoppingOrders;
     }
 
-
-
-/*    public List<Product> findAllProducts(){
-        List<Product> allProducts = productRepository.findAll();
-        return allProducts;
-    }*/
 }

@@ -24,8 +24,9 @@ public class WebShopController {
         webShopService.login(username);
         return "adminpage";
     }
+
     @GetMapping("/admin")
-    public String adminWork(){
+    public String adminWork() {
         return "adminpage";
     }
 
@@ -43,7 +44,7 @@ public class WebShopController {
 
     @PostMapping("/searchitem")
     public String searchedItems(@RequestParam("itemName") String product, @RequestParam("getitem") String getitem, Model m) {
-       m.addAttribute("itemName", webShopService.showItem(product));
+        m.addAttribute("itemName", webShopService.showItem(product));
 
         return "itempage";
     }
@@ -77,11 +78,10 @@ public class WebShopController {
     @PostMapping("/checkout")
     public String registerOrder(Model m) {
         webShopService.saveShoppingOrder();
-        System.out.println("hej" + webShopService.getUsersOrder());
-        m.addAttribute("shoppingorder",webShopService.getUsersOrder());
-
+        m.addAttribute("shoppingorder", webShopService.getUsersOrder());
         return "/ordersuccesspage";
     }
+
     @GetMapping("/login")
     public String showCategories(Model m) {
         m.addAttribute("itemCategory", ProductCategory.values());
@@ -114,13 +114,14 @@ public class WebShopController {
         }
         return "adminpage";
     }
-    @PostMapping("/undelivered")
-    String setAsDelivered(Model m, @RequestParam String delivery, @RequestParam Long id){
 
-        if("Set as delivered".equals(delivery)){
+    @PostMapping("/undelivered")
+    String setAsDelivered(Model m, @RequestParam String delivery, @RequestParam Long id) {
+
+        if ("Set as delivered".equals(delivery)) {
             webShopService.updateOrderToDelivered(id);
         }
-       m.addAttribute("listWithOrders", webShopService.showNonDeliveredOrders());
+        m.addAttribute("listWithOrders", webShopService.showNonDeliveredOrders());
         return "undeliveredpage";
     }
 

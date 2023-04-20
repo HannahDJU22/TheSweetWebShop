@@ -14,6 +14,7 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<ShoppingOrder> shoppingOrders= new ArrayList<>();
 
+
     public void addOrderToUser(ShoppingOrder shoppingOrder){
         shoppingOrders.add(shoppingOrder);
 
@@ -45,4 +46,6 @@ public class User {
     public Long getId() {
         return id;
     }
+
+
 }
