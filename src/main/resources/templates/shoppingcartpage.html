@@ -1,10 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>ShoppingCart</title>
 </head>
+<link href="shopping.css" rel="stylesheet" type="text/css"/>
 <body>
-$END$
+<h2>This is your shoppingcart so far: </h2>
+<div th:each="line, iInfo :${shoppingcart}"></br>
+    Item: <span th:text="${line.getItem()}"></span></br>
+    No of items: <span th:text="${line.getQuantity()}"></span></br>
+
+    Total amount: <span th:text="${line.getLineAmount()}"></span>
+
+<form action="/shoppingcart" method="post">
+    <input type="hidden" name="lineindex" th:value="${iInfo.index}">
+    <input type="submit" name="event" value="Remove one item">
+    <input type="submit" name="event" value="Add one item">
+    <input type="submit" name="event" value="Delete item/items"></br>
+</form></br>
+</div>
+<h3>Total amount in cart: <span th:text="${totalAmount}"></span></h3>
+
+<form action="/checkout" method="post">
+    <input type="submit" name="submit" value="BUY">
+</form>
+<p>Back to product categories --> <a href="/login">Categories</a></p>
 </body>
 </html>

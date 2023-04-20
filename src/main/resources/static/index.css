@@ -1,0 +1,20 @@
+body{
+    background-color: lightpink;
+    font-family: Calibri;
+}
+body h1{
+    color: deeppink;
+    text-align: center;
+    font-size: 300%;
+}
+body p{
+    color: darkblue;
+    text-align: center;
+    font-size: 150%
+}
+form{
+    text-align: center;
+}
+form input{
+    font-size: 125%;
+}

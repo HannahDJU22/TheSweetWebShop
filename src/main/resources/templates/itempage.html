@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Sweets</title>
 </head>
+<link href="product.css" rel="stylesheet" type="text/css"/>
 <body>
-$END$
+<div th:each="i:${itemName}">
+  Product: <span th:text="${i.itemName}"></span>
+    Category: <span th:text="${i.itemCategory}"></span>
+  Price in SEK: <span th:text="${i.itemPrice}"></span>
+
+  <form action="/product" method="post">
+      No of items: <input type="text" name="NoOfItems" value="0">
+    <input type="hidden" name="id" th:value="${i.id}">
+    <input type="submit" value="Add to cart"></br>
+  </form>
+
+</div>
+<h3>Your shoppingcart: <a href="/shoppingcart">CART</a> </h3>
+<p>Back to product categories --> <a href="/login">Categories</a></p>
 </body>
 </html>

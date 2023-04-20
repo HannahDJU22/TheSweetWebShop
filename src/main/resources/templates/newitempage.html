@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Add product items</title>
 </head>
+<link href="admin.css" rel="stylesheet" type="text/css"/>
 <body>
-$END$
+<h2>Add new item to webshop</h2>
+<form th:action="@{/newitem}" method="post" th:object="${product}">
+  Category: <select th:field="*{itemCategory}">
+    <option th:each="e:${catValues}" th:value="${e}" th:text="${e.toString()}"/></select></br>
+
+    Name:<input type="text" th:field="*{itemName}"/></br>
+  Price: <input type="text" th:field="*{itemPrice}"/></br>
+  </br>
+  <input type="submit" value="Create and add new item"/>
+</form>
+
+<p>Back to working categories --> <a href="/admin">WORK</a></p>
 </body>
 </html>

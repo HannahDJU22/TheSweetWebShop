@@ -4,7 +4,23 @@
     <meta charset="UTF-8">
     <title>The sweetest webshop</title>
 </head>
+<link href="product.css" rel="stylesheet" type="text/css"/>
 <body>
-<p>Hej hej hej</p>
+<h2> See what items we have to offer</h2>
+<div th:each="p:${productlist}">
+   Category: <span th:text="${p.itemCategory}"></span></br>
+   Product: <span th:text="${p.itemName}"></span></br>
+   Price in SEK: <span th:text="${p.itemPrice}"></span>
+
+    <form action="/product" method="post">
+        <input type="hidden" name="id" th:value="${p.id}">
+        No of items: <input type="text" name="NoOfItems" value="0">
+        <input type="submit" value="Add to cart"></br>
+        </br>
+    </form>
+</div></br>
+<h3>Your shoppingcart: <a href="/shoppingcart">CART</a> </h3>
+</br>
+<p>Back to product categories --> <a href="/login">Categories</a></p>
 </body>
 </html>

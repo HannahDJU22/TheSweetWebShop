@@ -1,2 +1,7 @@
-package se.iths.thesweetwebshop;public class ProductCategory {
+package se.iths.thesweetwebshop;
+
+public enum ProductCategory {
+    CANDY,
+    ICECREAM,
+    SNACKS,
 }
