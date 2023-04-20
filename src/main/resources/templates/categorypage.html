@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>The sweetest products</title>
+</head>
+<body>
+<h1><strong>Welcome to the sweetest webshop!</strong></h1>
+<h2>Please choose a product category</h2>
+
+<form action="/webshop" method="post">
+    CANDY
+    <input type="submit" th:name="${itemCategory}" value="Choose"></br>
+    ICECREAM
+    <input type="submit" th:name="${itemCategory}" value="Choose"></br>
+    SNACKS
+    <input type="submit" th:name="${itemCategory}" value="Choose">
+</form>
+</br>
+<h3>Are you looking for a specific type of product?</h3>
+<form action="/searchitem" method="post">
+    <input type="text" name="itemCategory">
+    <input type="submit" value="Search">
+</form>
+</h3>
+</body>
+</html>

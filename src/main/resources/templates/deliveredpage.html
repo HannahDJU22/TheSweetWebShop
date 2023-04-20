@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Undelivered orders</title>
+</head>
+<link href="admin.css" rel="stylesheet" type="text/css"/>
+<body>
+<h2>List of non handled shoppingorders:</h2>
+<div th:each="o:${listWithOrders}">
+    OrderId: <span th:text="${o.id}"></span></br>
+
+    <form action="/undelivered" method="post">
+        <input type="hidden" name="id" th:value="${o.id}">
+
+        <input type="submit" name="delivery" value="Set as delivered"></br>
+        </br>
+    </form>
+</div>
+
+
+
+<p>Back to working categories --> <a href="/admin">WORK</a></p>
+</body>
+</html>
